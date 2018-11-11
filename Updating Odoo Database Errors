@@ -1,0 +1,160 @@
+/usr/bin/python3.6 /opt/odoo/odoo/odoo-bin --addons-path=addons,myaddons -d myFirstDatabase -u odootycoon
+/home/nezar/.local/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+2018-11-11 17:16:34,839 6450 INFO ? odoo: Odoo version 12.0 
+2018-11-11 17:16:34,839 6450 INFO ? odoo: addons paths: ['/home/nezar/.local/share/Odoo/addons/12.0', '/opt/odoo/odoo/addons', '/opt/odoo/odoo/myaddons', '/opt/odoo/odoo/odoo/addons'] 
+2018-11-11 17:16:34,840 6450 INFO ? odoo: database: default@default:default 
+2018-11-11 17:16:34,994 6450 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/bin/wkhtmltopdf 
+2018-11-11 17:16:34,995 6450 INFO ? odoo.addons.base.models.ir_actions_report: Wkhtmltopdf seems to be broken. 
+2018-11-11 17:16:35,075 6450 INFO ? odoo.service.server: HTTP service (werkzeug) running on nezar-OptiPlex-9020:8069 
+2018-11-11 17:16:35,082 6450 INFO myFirstDatabase odoo.modules.loading: loading 1 modules... 
+2018-11-11 17:16:35,097 6450 INFO myFirstDatabase odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries 
+2018-11-11 17:16:35,169 6450 INFO myFirstDatabase odoo.modules.loading: updating modules list 
+2018-11-11 17:16:35,170 6450 INFO myFirstDatabase odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2018-11-11 17:16:35,478 6450 INFO myFirstDatabase odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['odootycoon'] to user __system__ #1 via n/a 
+2018-11-11 17:16:35,478 6450 INFO myFirstDatabase odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['odootycoon'] to user __system__ #1 via n/a 
+2018-11-11 17:16:35,702 6450 INFO myFirstDatabase odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['sale'] to user __system__ #1 via n/a 
+2018-11-11 17:16:35,846 6450 ERROR myFirstDatabase odoo.modules.graph: module odootycoon: Unmet dependencies: sale 
+2018-11-11 17:16:35,846 6450 INFO myFirstDatabase odoo.modules.loading: loading 16 modules... 
+2018-11-11 17:16:35,900 6450 INFO myFirstDatabase odoo.modules.loading: 16 modules loaded in 0.05s, 0 queries 
+2018-11-11 17:16:35,907 6450 INFO myFirstDatabase odoo.modules.loading: loading 36 modules... 
+2018-11-11 17:16:36,039 6450 INFO myFirstDatabase odoo.modules.registry: module uom: creating or updating database tables 
+2018-11-11 17:16:36,100 6450 INFO myFirstDatabase odoo.modules.loading: loading uom/data/uom_data.xml 
+2018-11-11 17:16:36,186 6450 INFO myFirstDatabase odoo.modules.loading: loading uom/security/uom_security.xml 
+2018-11-11 17:16:36,239 6450 INFO myFirstDatabase odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2018-11-11 17:16:36,257 6450 INFO myFirstDatabase odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2018-11-11 17:16:36,515 6450 INFO myFirstDatabase odoo.modules.registry: module mail: creating or updating database tables 
+2018-11-11 17:16:36,559 6450 ERROR myFirstDatabase odoo.sql_db: bad query: b'ALTER TABLE "mail_alias" ALTER COLUMN "alias_model_id" SET NOT NULL'
+ERROR: column "alias_model_id" contains null values
+ 
+2018-11-11 17:16:36,559 6450 WARNING myFirstDatabase odoo.schema: Table 'mail_alias': unable to set NOT NULL on column 'alias_model_id'!
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE "mail_alias" ALTER COLUMN "alias_model_id" SET NOT NULL 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo/odoo/tools/sql.py", line 109, in set_not_null
+    cr.execute(query)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 148, in wrapper
+    return f(self, *args, **kwargs)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 225, in execute
+    res = self._obj.execute(query, params)
+psycopg2.IntegrityError: column "alias_model_id" contains null values
+
+2018-11-11 17:16:36,640 6450 ERROR myFirstDatabase odoo.sql_db: bad query: b'ALTER TABLE "mail_followers" ALTER COLUMN "res_model" SET NOT NULL'
+ERROR: column "res_model" contains null values
+ 
+2018-11-11 17:16:36,640 6450 WARNING myFirstDatabase odoo.schema: Table 'mail_followers': unable to set NOT NULL on column 'res_model'!
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE "mail_followers" ALTER COLUMN "res_model" SET NOT NULL 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo/odoo/tools/sql.py", line 109, in set_not_null
+    cr.execute(query)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 148, in wrapper
+    return f(self, *args, **kwargs)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 225, in execute
+    res = self._obj.execute(query, params)
+psycopg2.IntegrityError: column "res_model" contains null values
+
+2018-11-11 17:16:36,888 6450 ERROR myFirstDatabase odoo.sql_db: bad query: b'ALTER TABLE "mail_followers" ADD CONSTRAINT "mail_followers_partner_xor_channel" CHECK((partner_id IS NULL) != (channel_id IS NULL))'
+ERROR: check constraint "mail_followers_partner_xor_channel" is violated by some row
+ 
+2018-11-11 17:16:36,889 6450 WARNING myFirstDatabase odoo.schema: Table 'mail_followers': unable to add constraint 'mail_followers_partner_xor_channel'!
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE "mail_followers" ADD CONSTRAINT "mail_followers_partner_xor_channel" CHECK((partner_id IS NULL) != (channel_id IS NULL)) 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo/odoo/tools/sql.py", line 138, in add_constraint
+    cr.execute(query1)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 148, in wrapper
+    return f(self, *args, **kwargs)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 225, in execute
+    res = self._obj.execute(query, params)
+psycopg2.IntegrityError: check constraint "mail_followers_partner_xor_channel" is violated by some row
+
+2018-11-11 17:16:38,434 6450 ERROR myFirstDatabase odoo.sql_db: bad query: b'ALTER TABLE "mail_channel" ALTER COLUMN "name" SET NOT NULL'
+ERROR: column "name" contains null values
+ 
+2018-11-11 17:16:38,434 6450 WARNING myFirstDatabase odoo.schema: Table 'mail_channel': unable to set NOT NULL on column 'name'!
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE "mail_channel" ALTER COLUMN "name" SET NOT NULL 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo/odoo/tools/sql.py", line 109, in set_not_null
+    cr.execute(query)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 148, in wrapper
+    return f(self, *args, **kwargs)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 225, in execute
+    res = self._obj.execute(query, params)
+psycopg2.IntegrityError: column "name" contains null values
+
+2018-11-11 17:16:38,645 6450 ERROR myFirstDatabase odoo.sql_db: bad query: b"UPDATE ir_model SET transient=false,is_mail_thread=true,name='Discussion Channel',state='base',info=' A mail.channel is a discussion group that may behave like a listener\n    on documents. ' WHERE model='mail.channel' RETURNING id"
+ERROR: column "is_mail_thread" of relation "ir_model" does not exist
+LINE 1: UPDATE ir_model SET transient=false,is_mail_thread=true,name...
+                                            ^
+ 
+2018-11-11 17:16:38,650 6450 WARNING myFirstDatabase odoo.modules.loading: Transient module states were reset 
+2018-11-11 17:16:38,664 6450 ERROR myFirstDatabase odoo.modules.registry: Failed to load registry 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo/odoo/modules/registry.py", line 86, in new
+    odoo.modules.load_modules(registry._db, force_demo, status, update_module)
+  File "/opt/odoo/odoo/odoo/modules/loading.py", line 426, in load_modules
+    loaded_modules, update_module, models_to_check)
+  File "/opt/odoo/odoo/odoo/modules/loading.py", line 318, in load_marked_modules
+    perform_checks=perform_checks, models_to_check=models_to_check
+  File "/opt/odoo/odoo/odoo/modules/loading.py", line 197, in load_module_graph
+    registry.init_models(cr, model_names, {'module': package.name})
+  File "/opt/odoo/odoo/odoo/modules/registry.py", line 296, in init_models
+    model._auto_init()
+  File "/opt/odoo/odoo/odoo/models.py", line 2402, in _auto_init
+    new = field.update_db(self, columns)
+  File "/opt/odoo/odoo/odoo/fields.py", line 2083, in update_db
+    return super(Many2one, self).update_db(model, columns)
+  File "/opt/odoo/odoo/odoo/fields.py", line 871, in update_db
+    self.update_db_notnull(model, column)
+  File "/opt/odoo/odoo/odoo/fields.py", line 911, in update_db_notnull
+    model._init_column(self.name)
+  File "/opt/odoo/odoo/addons/mail/models/mail_alias.py", line 234, in _init_column
+    IM._reflect_model(self)
+  File "/opt/odoo/odoo/odoo/addons/base/models/ir_model.py", line 262, in _reflect_model
+    ids = query_update(cr, self._table, params, ['model'])
+  File "/opt/odoo/odoo/odoo/addons/base/models/ir_model.py", line 65, in query_update
+    cr.execute(query, values)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 148, in wrapper
+    return f(self, *args, **kwargs)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 225, in execute
+    res = self._obj.execute(query, params)
+psycopg2.ProgrammingError: column "is_mail_thread" of relation "ir_model" does not exist
+LINE 1: UPDATE ir_model SET transient=false,is_mail_thread=true,name...
+                                            ^
+
+2018-11-11 17:16:38,665 6450 CRITICAL myFirstDatabase odoo.service.server: Failed to initialize database `myFirstDatabase`. 
+Traceback (most recent call last):
+  File "/opt/odoo/odoo/odoo/service/server.py", line 1042, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module)
+  File "/opt/odoo/odoo/odoo/modules/registry.py", line 86, in new
+    odoo.modules.load_modules(registry._db, force_demo, status, update_module)
+  File "/opt/odoo/odoo/odoo/modules/loading.py", line 426, in load_modules
+    loaded_modules, update_module, models_to_check)
+  File "/opt/odoo/odoo/odoo/modules/loading.py", line 318, in load_marked_modules
+    perform_checks=perform_checks, models_to_check=models_to_check
+  File "/opt/odoo/odoo/odoo/modules/loading.py", line 197, in load_module_graph
+    registry.init_models(cr, model_names, {'module': package.name})
+  File "/opt/odoo/odoo/odoo/modules/registry.py", line 296, in init_models
+    model._auto_init()
+  File "/opt/odoo/odoo/odoo/models.py", line 2402, in _auto_init
+    new = field.update_db(self, columns)
+  File "/opt/odoo/odoo/odoo/fields.py", line 2083, in update_db
+    return super(Many2one, self).update_db(model, columns)
+  File "/opt/odoo/odoo/odoo/fields.py", line 871, in update_db
+    self.update_db_notnull(model, column)
+  File "/opt/odoo/odoo/odoo/fields.py", line 911, in update_db_notnull
+    model._init_column(self.name)
+  File "/opt/odoo/odoo/addons/mail/models/mail_alias.py", line 234, in _init_column
+    IM._reflect_model(self)
+  File "/opt/odoo/odoo/odoo/addons/base/models/ir_model.py", line 262, in _reflect_model
+    ids = query_update(cr, self._table, params, ['model'])
+  File "/opt/odoo/odoo/odoo/addons/base/models/ir_model.py", line 65, in query_update
+    cr.execute(query, values)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 148, in wrapper
+    return f(self, *args, **kwargs)
+  File "/opt/odoo/odoo/odoo/sql_db.py", line 225, in execute
+    res = self._obj.execute(query, params)
+psycopg2.ProgrammingError: column "is_mail_thread" of relation "ir_model" does not exist
+LINE 1: UPDATE ir_model SET transient=false,is_mail_thread=true,name...
